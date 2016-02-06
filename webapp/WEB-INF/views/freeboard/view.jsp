@@ -69,10 +69,10 @@
 			</tr>
 		</table>
 		<div class="bottom">
-			<a href="/board/anony?a=anonylist">글목록</a>
-			<a href="/board/anony?a=modify&no=${board.board_seq}">글수정</a>
+			<a href="/board/free?a=freelist">글목록</a>
+			<a href="/board/free?a=modify&no=${board.board_seq}">글수정</a>
 			<c:if test="${authUser.id == board.id }">
-				<a href="/board/anony?a=delete&no=${board.board_seq}">글 삭제</a>
+				<a href="/board/free?a=delete&no=${board.board_seq}">글 삭제</a>
 			</c:if>			
 		</div>
 	</div>

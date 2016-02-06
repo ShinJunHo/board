@@ -36,8 +36,8 @@ public class FreeBoardServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		ActionFactory af = new FreeActionFactory();
 		String actionName = request.getParameter("a");
-		Action action = af.getAction(actionName);
 		
+		Action action = af.getAction(actionName);
 		action.execute(request, response);
 		
 	}

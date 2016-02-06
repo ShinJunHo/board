@@ -92,22 +92,6 @@ a.del {
 						<td><a href="" class="del">삭제</a></td>
 					</tr>
 					</c:forEach>
-					<!-- <tr>
-						<td>2</td>
-						<td><a href="/board/anony?a=view">두 번째 글입니다.</a></td>
-						<td>3</td>
-						<td>2016-02-01 00:00:00</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td><a href="/board/anony?a=view">첫 번째 글입니다.</a></td>
-						<td>3</td>
-						<td>2016-02-01 00:00:00</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					 -->
-					
 				</table>
 					<div class="bottom">
 						<a id="bottom-a" href="/board/anony?a=write" id="new-book">글쓰기</a>

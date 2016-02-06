@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -71,40 +77,26 @@ a.del {
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
-						<th>글쓴이</th>
+						<th>작성자</th>
 						<th>조회수</th>
 						<th>작성일</th>
 						<th>&nbsp;</th>
 
 					</tr>
+					<c:set var="count" value="${fn:length(list) }"/>
+					<c:forEach items="${list }" var="vo" varStatus="status">
 					<tr>
+						<td>${count - status.index }</td>
+						<td><a href="/board/free?a=view&no=${vo.board_seq}">${vo.title }</a></td>
+						<td>${vo.id }</td>
 						<td>3</td>
-						<td><a href="/mysite/board?a=view">세 번째 글입니다.</a></td>
-						<td>둘리</td>
-						<td>3</td>
-						<td>2016-02-01 00:00:00</td>
+						<td>${vo.modi_date }</td>
 						<td><a href="" class="del">삭제</a></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td><a href="/mysite/board?a=view">두 번째 글입니다.</a></td>
-						<td>둘리</td>
-						<td>3</td>
-						<td>2016-02-01 00:00:00</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td><a href="/mysite/board?a=view">첫 번째 글입니다.</a></td>
-						<td>둘리</td>
-						<td>3</td>
-						<td>2016-02-01 00:00:00</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					
+					</c:forEach>
 				</table>
 					<div class="bottom">
-						<a id="bottom-a" href="/mysite/board?a=write" id="new-book">글쓰기</a>
+						<a id="bottom-a" href="/board/free?a=write" id="new-book">글쓰기</a>
 					</div>
 			</div>
 					<jsp:include page="/WEB-INF/views/include/navigation.jsp"></jsp:include>

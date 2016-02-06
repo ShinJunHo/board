@@ -26,7 +26,8 @@ public class BoardDao {
 		}
 		return connection;
 	}
-	public List<BoardVo> getList(){
+	//자유게시판 익명게시판 이런것들을 flag값을 통해서 리스트를 받아와야겠다.
+	public List<BoardVo> getList(String boardCode){
 		List<BoardVo> list = new ArrayList<BoardVo>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -35,9 +36,11 @@ public class BoardDao {
 		BoardVo vo = null;
 		try{
 			conn = getConnection();
-			String sql ="select seq,user_id,title,contents,board_name,modifydate from tb_board";
+			String sql ="select seq,user_id,title,contents,board_name,modifydate from tb_board where board_name = ?";
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardCode);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				int no = rs.getInt(1);
@@ -89,12 +92,13 @@ public class BoardDao {
 			
 			switch (vo.getBoard_name()) {
 			case "Anony":
-				sql +=" values(BOARD_SEQ.nextval,'Anony',?,?,?,sysdate)";
+				sql +=" values(BOARD_SEQ.nextval,?,?,?,?,sysdate)";
 				System.out.println("SQL::"+sql);
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, vo.getTitle());
-				pstmt.setString(2, vo.getContent());
-				pstmt.setString(3, vo.getBoard_name());
+				pstmt.setString(1, vo.getId());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getContent());
+				pstmt.setString(4, vo.getBoard_name());
 				break;
 			case "Free":
 				sql +=" values(BOARD_SEQ.nextval,?,?,?,?,sysdate)";
@@ -198,5 +202,30 @@ public class BoardDao {
 			}
 		}
 		
+	}
+	public void delete(BoardVo vo){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = getConnection();
+			String sql = "delete from tb_board where seq =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getBoard_seq());
+			pstmt.executeUpdate();
+			
+		}catch(SQLException ex){
+			System.out.println("에러:"+ex);
+		}finally{
+			try{
+				if(pstmt != null){
+					pstmt.close();
+				}if(conn != null){
+					conn.close();
+				}
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+		}
 	}
 }

@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,30 +47,33 @@
 </head>
 <body>
 	<div id="container">
+		<form method="post" action="/board/free">
+		<input type="hidden" name="a" value="insert">
+		<input type="hidden" name="boardname" value="Free">
+		
 		<table class="tbl-ex">
 			<tr>
-				<th colspan="2">글보기</th>
+				<th colspan="2">글쓰기</th>
 			</tr>
 			<tr>
 				<td class="label">제목</td>
-				<td>${board.title}</td>
+				<td><input type="text" name="title" value=""></td>
 			</tr>
 			<tr>
 				<td class="label">내용</td>
 				<td>
 					<div class="view-content">
-						${board.content }
+						<textarea id="content" name="content" rows="10" cols="50"></textarea>
 					</div>
 				</td>
 			</tr>
 		</table>
-		<div class="bottom">
-			<a href="/board/anony?a=anonylist">글목록</a>
-			<a href="/board/anony?a=modify&no=${board.board_seq}">글수정</a>
-			<c:if test="${authUser.id == board.id }">
-				<a href="/board/anony?a=delete&no=${board.board_seq}">글 삭제</a>
-			</c:if>			
+		
+		<div class="bottom" >
+			<input type="submit" value="등록">
+			<a href="/board/anony?a=freelist">취소</a>
 		</div>
+		</form>
 	</div>
 </body>
 </html>

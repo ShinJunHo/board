@@ -1,7 +1,6 @@
-package com.bit.board.http.action.anony;
+package com.bit.board.http.action.free;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,18 +11,16 @@ import com.bit.board.http.action.Action;
 import com.bit.board.vo.BoardVo;
 import com.bit.http.HttpUtil;
 
-public class AnonyList implements Action {
+public class ModifyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		BoardDao dao = new BoardDao();
-		String boardCode = "Anony";
-		List<BoardVo> list  = dao.getList(boardCode);
-		
-		request.setAttribute("list", list);
-		HttpUtil.forwarding(request, response, "/WEB-INF/views/anonymousboard/list.jsp");
+		int no = Integer.parseInt(request.getParameter("no"));
+		BoardVo vo = dao.getView(no);
+		request.setAttribute("board", vo);
+		HttpUtil.forwarding(request, response, "/WEB-INF/views/freeboard/modify.jsp");
 	}
 
 }
