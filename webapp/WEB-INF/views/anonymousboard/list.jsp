@@ -50,19 +50,19 @@ input[type="submit"] {
 	border-bottom: 2px solid #333;
 }
 
-a.del {
-	display: block;
-	width: 20px;
-	height: 20px;
-	font-size: 0;
-}
 #bottom-a{
 	display:inline-block;
 	width:50px;
 	text-align:right;
 }
 </style>
-
+<!--  제목 내용이 빈칸일때.  -->
+<c:if test="${result == 'fail' }">
+<script type="text/javascript">
+	alert("빈칸을 채워주세요. 입력 실패");
+</script>
+	
+</c:if>
 </head>
 <body>
 	<div>
@@ -77,7 +77,6 @@ a.del {
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
-						<th>조회수</th>
 						<th>작성일</th>
 						<th>&nbsp;</th>
 
@@ -87,9 +86,7 @@ a.del {
 					<tr>
 						<td>${count - status.index }</td>
 						<td><a href="/board/anony?a=view&no=${vo.board_seq}">${vo.title }</a></td>
-						<td>3</td>
 						<td>${vo.modi_date }</td>
-						<td><a href="" class="del">삭제</a></td>
 					</tr>
 					</c:forEach>
 				</table>

@@ -23,13 +23,18 @@
 label {
 	font-size: 20px;
 	font-weight: bold;
+	margin-right:30px;
 }
 
-#btn1 {
+.btn1 {
 	background-color: cadetblue;
 }
 </style>
-
+<script type="text/javascript">
+	function cancel(){
+		window.location.href='/board/main';
+	}
+</script>
 </head>
 <body>
 	<div id="container">
@@ -37,9 +42,9 @@ label {
 			<form id="login-form" name="loginform" method="post" action="/board/user?a=login">
 				<label>ID:</label><input type="text" id="loginID" name="loginID" /><br />
 				<label>PASSWORD:</label><input type="password" id="loginPW"
-					name="loginPW" /> <br /> <input id="btn1" type="submit"
+					name="loginPW" /> <br /> <input class="btn1" type="submit"
 					value="로그인." />
-
+					<input class="btn1" type="button" value="취소" onclick="cancel()">
 
 			</form>
 

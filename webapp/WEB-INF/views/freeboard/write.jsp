@@ -41,6 +41,10 @@
 .tbl-ex td.title {
 	text-align: left;
 }
+a {
+	text-decoration: none;
+}
+
 </style>
 
 
@@ -71,7 +75,7 @@
 		
 		<div class="bottom" >
 			<input type="submit" value="등록">
-			<a href="/board/anony?a=freelist">취소</a>
+			<a href="/board/free?a=freelist">취소</a>
 		</div>
 		</form>
 	</div>

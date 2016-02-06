@@ -41,6 +41,10 @@
 .tbl-ex td.title {
 	text-align: left;
 }
+a {
+	text-decoration: none;
+}
+
 </style>
 
 

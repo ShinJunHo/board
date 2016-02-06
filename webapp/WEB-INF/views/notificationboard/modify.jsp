@@ -41,17 +41,16 @@
 .tbl-ex td.title {
 	text-align: left;
 }
-a {
-	text-decoration: none;
+a{
+text-decoration: none;
 }
-
 </style>
 
 
 </head>
 <body>
 	<div id="container">
-		<form method="post" action="/board/free">
+		<form method="post" action="/board/noti">
 			<input type="hidden" name="a" value="update">
 			<input type="hidden" name="id" value="${authUser.id}">
 			<input type="hidden" name="no" value="${board.board_seq }">
@@ -75,7 +74,7 @@ a {
 			</tr>
 		</table>
 		<div class="bottom">
-			<a href="/board/free?a=freelist">글목록</a>
+			<a href="/board/noti?a=notilist">글목록</a>
 			<input type="submit" value="수정">
 		</div>
 		</form>

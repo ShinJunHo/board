@@ -12,7 +12,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-div {
+#header{
+	width:800px;
+	margin: 20px auto;
 	overflow: hidden;
 }
 h1{
@@ -27,11 +29,19 @@ ul li {
 a {
 	text-decoration: none;
 }
+#header > a{
+	font-weight:bold;
+	font-size:30px;
+	margin: 0 auto;
+}
 </style>
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
 	<div id="header">
-	<h1>Bit Academy Board</h1>
+	<a id="home" href="/board/main">Bit Academy Board</a>
 	
 		<ul>
 		<c:choose>

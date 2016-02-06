@@ -41,8 +41,8 @@
 .tbl-ex td.title {
 	text-align: left;
 }
-a {
-	text-decoration: none;
+a{
+text-decoration: none;
 }
 
 </style>
@@ -51,32 +51,31 @@ a {
 </head>
 <body>
 	<div id="container">
-		<form method="post" action="/board/free">
-			<input type="hidden" name="a" value="update">
-			<input type="hidden" name="id" value="${authUser.id}">
-			<input type="hidden" name="no" value="${board.board_seq }">
+		<form method="post" action="/board/noti">
+		<input type="hidden" name="a" value="insert">
+		<input type="hidden" name="boardname" value="Noti">
+		
 		<table class="tbl-ex">
 			<tr>
-				<th colspan="2">글수정</th>
+				<th colspan="2">글쓰기</th>
 			</tr>
 			<tr>
 				<td class="label">제목</td>
-				<td><input type="text" name="title" value="${board.title}"></td>
+				<td><input type="text" name="title" value=""></td>
 			</tr>
 			<tr>
 				<td class="label">내용</td>
 				<td>
 					<div class="view-content">
-						<textarea rows="10" cols="50" id="content" name="content">
-						${board.content }
-						</textarea>
+						<textarea id="content" name="content" rows="10" cols="50"></textarea>
 					</div>
 				</td>
 			</tr>
 		</table>
-		<div class="bottom">
-			<a href="/board/free?a=freelist">글목록</a>
-			<input type="submit" value="수정">
+		
+		<div class="bottom" >
+			<input type="submit" value="등록">
+			<a href="/board/noti?a=notilist">취소</a>
 		</div>
 		</form>
 	</div>

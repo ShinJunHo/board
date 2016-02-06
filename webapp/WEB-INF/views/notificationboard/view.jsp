@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,8 +45,8 @@
 .tbl-ex td.title {
 	text-align: left;
 }
-a {
-	text-decoration: none;
+a{
+text-decoration: none;
 }
 
 </style>
@@ -51,34 +55,30 @@ a {
 </head>
 <body>
 	<div id="container">
-		<form method="post" action="/board/free">
-			<input type="hidden" name="a" value="update">
-			<input type="hidden" name="id" value="${authUser.id}">
-			<input type="hidden" name="no" value="${board.board_seq }">
 		<table class="tbl-ex">
 			<tr>
-				<th colspan="2">글수정</th>
+				<th colspan="2">글보기</th>
 			</tr>
 			<tr>
 				<td class="label">제목</td>
-				<td><input type="text" name="title" value="${board.title}"></td>
+				<td>${board.title}</td>
 			</tr>
 			<tr>
 				<td class="label">내용</td>
 				<td>
 					<div class="view-content">
-						<textarea rows="10" cols="50" id="content" name="content">
 						${board.content }
-						</textarea>
 					</div>
 				</td>
 			</tr>
 		</table>
 		<div class="bottom">
-			<a href="/board/free?a=freelist">글목록</a>
-			<input type="submit" value="수정">
+			<a href="/board/noti?a=notilist">글목록</a>
+			<a href="/board/noti?a=modify&no=${board.board_seq}">글수정</a>
+			<c:if test="${authUser.id == board.id }">
+				<a href="/board/noti?a=delete&no=${board.board_seq}">글 삭제</a>
+			</c:if>			
 		</div>
-		</form>
 	</div>
 </body>
 </html>

@@ -17,11 +17,12 @@ public class AnonyList implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String result = request.getParameter("result");
 		BoardDao dao = new BoardDao();
 		String boardCode = "Anony";
 		List<BoardVo> list  = dao.getList(boardCode);
 		
+		request.setAttribute("result", result);
 		request.setAttribute("list", list);
 		HttpUtil.forwarding(request, response, "/WEB-INF/views/anonymousboard/list.jsp");
 	}

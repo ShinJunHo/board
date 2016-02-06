@@ -26,9 +26,24 @@
 		}
 		a{
 			color:black;
+			text-decoration: none;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		var emptys = document.getElementsByClassName("empty");
+		var elems =  document.getElementsByClassName("time");
+		for(var i = 0; i < emptys.length; i++)
+		{
+			emptys[i].onclick=function(){alert("1234");};
+		}
+		function empty(){
+			confirm("로그인 후 이용해주시기 바랍니다.");
+			
 		}
 		
-	</style>
+		
+	</script>
 </head>
 <body>
 	<div class="nav-div">
@@ -36,9 +51,9 @@
 		<ul>
 			<c:choose>
 				<c:when test="${empty authUser }">
-				<li><a href="/board/main">익명게시판</a></li>
-					<li><a href="/board/main">자유게시판</a></li>
-					<li><a href="/board/main">공지게시판</a></li>
+					<li><a href="#" onclick="empty();">익명게시판</a></li>
+					<li><a href="#" onclick="empty();">자유게시판</a></li>
+					<li><a href="#" onclick="empty();">공지게시판</a></li>
 					
 				</c:when>
 				<c:otherwise>

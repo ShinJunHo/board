@@ -109,7 +109,7 @@ public class BoardDao {
 				pstmt.setString(4, vo.getBoard_name());
 				break;
 			case "Noti":
-				sql +=" values(BOARD_SEQ.nextval,'Manager',?,?,?,sysdate)";
+				sql +=" values(BOARD_SEQ.nextval,'Admin',?,?,?,sysdate)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, vo.getTitle());
 				pstmt.setString(2, vo.getContent());

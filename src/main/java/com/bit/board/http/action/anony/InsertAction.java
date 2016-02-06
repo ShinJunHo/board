@@ -24,6 +24,14 @@ public class InsertAction implements Action {
 		UserVo uvo = (UserVo)session.getAttribute("authUser");
 		String id = uvo.getId();
 		String boardName = request.getParameter("boardname");
+	
+		
+		
+		if(title.trim().length() == 0 || content.trim().length() == 0){
+			HttpUtil.redirect(response, "/board/anony?result=fail");
+			return ;
+		}
+		
 		
 		BoardVo vo = new BoardVo();
 		//trim 해줘야지.
